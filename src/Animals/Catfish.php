@@ -5,7 +5,9 @@ namespace App\Animals;
 
 
 
-class Catfish extends Fish
+use App\Interfaces\CanSwim;
+
+class Catfish extends Fish implements CanSwim
 {
 
 }

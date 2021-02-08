@@ -9,35 +9,32 @@ use App\Animals\Elephant;
 use App\Animals\Fish;
 use App\Animals\Parrot;
 use App\Animals\Zebra;
+use App\Zoo;
 
 require __DIR__ . '/vendor/autoload.php';
 
 // Here comes your code.
 
-
-
 $animals = [
-    Fish::class => 5,
-    BubbleFish::class => 3,
-    Catfish::class => 2,
-    Clownfish::class => 1,
-    Elephant::class => 2,
-    Zebra::class => 1,
-    Parrot::class => 10,
-    Dove::class => 2,
+    Fish::class => ["Fish", 5],
+    Bubblefish::class => ["Bubblefish", 3],
+    Catfish::class => ["Catfish", 2],
+    Clownfish::class => ["Clownfish", 1],
+    Elephant::class => ["Elephant", 2],
+    Zebra::class => ["Zebra", 1],
+    Parrot::class => ["Parrot", 10],
+    Dove::class => ["Dove", 2],
 ];
-$tableau = [];
-foreach ($animals as $key => $value){
-    for ($i = 1; $i < $value + 1; $i++){
-        $tableau[] = new $key($key. " ". $i);
+
+foreach ($animals as $animalsType => $animalDefinition) {
+    for ($i = 1; $i < $animalDefinition[1] + 1; $i++) {
+        Zoo::addAnimal(new $animalsType($animalDefinition[0] . " " . $i));
     }
 }
-foreach ($tableau as $value){
-    echo "<pre>";
-    echo " Je suis : " .$value->name(). " et je fais " .$value->noise();
-    echo "</pre>";
-}
 
-echo "<pre>";
-var_dump($tableau);
-echo "</pre>";
+Zoo::visitTheZoo();
+
+
+
+
+

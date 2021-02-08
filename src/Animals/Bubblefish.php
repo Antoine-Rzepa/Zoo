@@ -6,7 +6,9 @@ namespace App\Animals;
 
 
 
-class Bubblefish extends Fish
+use App\Interfaces\CanSwim;
+
+class Bubblefish extends Fish implements CanSwim
 {
 
 
